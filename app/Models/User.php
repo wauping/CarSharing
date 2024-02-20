@@ -7,10 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany; 
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function rents(): HasMany
+    {
+        return $this->hasMany(Rent::class);
+    }
+    public function cars(): BelongsToMany
+    {
+        return $this->belongsToMany(Car::class, 'rents');
+    }
 
     /**
      * The attributes that are mass assignable.

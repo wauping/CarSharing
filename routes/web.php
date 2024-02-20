@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\RentController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +23,7 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return view('hello', ['title' => 'Hello, World!']);
 });
-
+Route::get('/car', [CarController::class, 'index']);
+Route::get('/car/{id}', [CarController::class, 'show']);
+Route::get('/rent', [RentController::class,'index']);
+Route::get('/user/{id}', [UserController::class, 'show']);
