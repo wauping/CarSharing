@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('phone');
-            $table->unsignedFloat('discount, %');   
+            $table->unsignedFloat('discount');   
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('phone');
-            $table->dropColumn('discount, %');
+            $table->dropColumn('discount');
         });
     }
 };

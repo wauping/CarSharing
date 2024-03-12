@@ -26,4 +26,11 @@ Route::get('/hello', function () {
 Route::get('/car', [CarController::class, 'index']);
 Route::get('/car/{id}', [CarController::class, 'show']);
 Route::get('/rent', [RentController::class,'index']);
+Route::get('/user', [UserController::class,'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
+Route::get('rent/create', [RentController::class,'create']);
+Route::get('/rent/edit/{id}', [RentController::class, 'edit']);
+Route::get('/rent/destroy/{id}', [RentController::class, 'destroy']);
+
+Route::post('/rent', [RentController::class,'store']);
+Route::post('/rent/update/{id}', [RentController::class, 'update']);

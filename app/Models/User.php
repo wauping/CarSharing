@@ -14,6 +14,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    public $datetime = false;
+
     public function rents(): HasMany
     {
         return $this->hasMany(Rent::class);
@@ -42,6 +45,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at'
     ];
 
     /**

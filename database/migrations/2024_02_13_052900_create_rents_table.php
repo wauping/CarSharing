@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('car_id')->references('id')->on('cars');
             $table->unsignedBigINteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedFloat('checksum, rub');
+            $table->unsignedFloat('checksum');
             $table->double('address_latitude')->nullable();
             $table->double('address_longitude')->nullable();
         });

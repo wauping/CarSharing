@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('model');
             $table->char('color');
             $table->boolean('available');
-            $table->unsignedFloat('cost_per_minute, rub');
+            $table->unsignedFloat('cost_per_minute');
         });
     }
 
