@@ -30,6 +30,7 @@
             </td>
         </tr>
         @endforeach
+        {{$rents->links()}}
     </table>    
 </body>
 </html>

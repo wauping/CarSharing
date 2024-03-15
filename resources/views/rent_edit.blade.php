@@ -56,7 +56,7 @@
         <div class="is-invalid">{{$message}}</div>
         @enderror
     <br>
-        <input type="submit">
+        <input type="submit" value="Изменить">
 </form>
 </body>
 </html>
