@@ -7,6 +7,8 @@ use App\Models\Rent;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
+
 class RentController extends Controller
 {
     /**
@@ -103,6 +105,10 @@ class RentController extends Controller
      */
     public function destroy(string $id)
     {
+        if (! Gate::allows('destroy-rent', Rent::all()->where('id', $id)->first())){
+            return redirect('/error')->with('message',
+                'У вас нет разрешения на удаление записи номер '. $id);
+        }
         Rent::destroy($id);
         return redirect('/rent');
     }

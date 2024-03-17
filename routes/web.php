@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -28,9 +29,15 @@ Route::get('/car/{id}', [CarController::class, 'show']);
 Route::get('/rent', [RentController::class,'index']);
 Route::get('/user', [UserController::class,'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
-Route::get('rent/create', [RentController::class,'create']);
-Route::get('/rent/edit/{id}', [RentController::class, 'edit']);
-Route::get('/rent/destroy/{id}', [RentController::class, 'destroy']);
+Route::get('rent/create', [RentController::class,'create'])->middleware('auth');
+Route::get('/rent/edit/{id}', [RentController::class, 'edit'])->middleware('auth');
+Route::get('/rent/destroy/{id}', [RentController::class, 'destroy'])->middleware('auth');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/error', function(){
+    return view('error', ['message' => session('message')]);
+});
 
 Route::post('/rent', [RentController::class,'store']);
-Route::post('/rent/update/{id}', [RentController::class, 'update']);
+Route::post('/rent/update/{id}', [RentController::class, 'update'])->middleware('auth');
+Route::post('/auth', [LoginController::class,'authenticate']);
