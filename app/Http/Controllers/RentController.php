@@ -45,7 +45,9 @@ class RentController extends Controller
         ]);
         $rent = new Rent($validated);
         $rent->save();
-        return redirect('/rent');
+        return redirect('/rent')->withErrors([
+            'success' => 'Запись успешно добавлена!'
+        ]);
     }
 
     /**
@@ -97,7 +99,9 @@ class RentController extends Controller
         }
 
         $rent->save();
-        return redirect('/rent');
+        return redirect('/rent')->withErrors([
+            'success' => 'Запись '. $id . ' успешно изменена!'
+        ]);
     }
 
     /**
@@ -106,8 +110,9 @@ class RentController extends Controller
     public function destroy(string $id)
     {
         if (! Gate::allows('destroy-rent', Rent::all()->where('id', $id)->first())){
-            return redirect('/error')->with('message',
-                'У вас нет разрешения на удаление записи номер '. $id);
+            return redirect()->intended('/rent')->withErrors([
+                'error' => 'У вас нет разрешения на удаление записи номер '. $id
+            ]);
         }
         Rent::destroy($id);
         return redirect('/rent');

@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аренда</title>
-</head>
-<body>
+@extends('layout')
+@section('content')
     <h2>Список аренд:</h2>
-    <table border="1">
+    <table class="table table-striped-columns">
         <thead>
             <td>№</td>
             <td>Начало поездки</td>
@@ -30,7 +24,11 @@
             </td>
         </tr>
         @endforeach
-        {{$rents->links()}}
-    </table>    
-</body>
-</html>
+        <div class="pagination">
+            {{$rents->links('bootstrap-5')}}
+        </div>
+    </table>
+    <form action="/rent/create" class="inline add-record">
+        <button class="btn btn-primary">Добавить запись</button>
+    </form>
+@endsection

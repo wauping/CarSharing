@@ -41,3 +41,6 @@ Route::get('/error', function(){
 Route::post('/rent', [RentController::class,'store']);
 Route::post('/rent/update/{id}', [RentController::class, 'update'])->middleware('auth');
 Route::post('/auth', [LoginController::class,'authenticate']);
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
