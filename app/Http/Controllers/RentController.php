@@ -115,6 +115,8 @@ class RentController extends Controller
             ]);
         }
         Rent::destroy($id);
-        return redirect('/rent');
+        return redirect('/rent')->withErrors([
+            'success' => 'Запись '. $id . ' успешно удалена!'
+        ]);
     }
 }
