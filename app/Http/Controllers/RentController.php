@@ -46,7 +46,7 @@ class RentController extends Controller
         $rent = new Rent($validated);
         $rent->save();
         return redirect('/rent')->withErrors([
-            'success' => 'Запись успешно добавлена!'
+            'success' => 'Запись '. $rent->id . ' успешно добавлена!'
         ]);
     }
 

@@ -12,7 +12,7 @@ class Rent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['start_time', 'car_id', 'user_id'];
+    protected $fillable = ['start_time', 'car_id', 'user_id', 'id'];
 
     public $timestamps = false;
 
